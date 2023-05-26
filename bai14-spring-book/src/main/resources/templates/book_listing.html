@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Book List - BT14</title>
+<link crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+	rel="stylesheet">
+<script crossorigin="anonymous"
+	integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+
+	<div class="container ">
+		<h2>READ ANY BOOOK</h2>
+		<hr />
+		<br />
+		<div class="row">
+			<div class="col-8 col-md-8 flex-column">
+				<div class="row">
+					<div class="col-6" th:each="book : ${books}">
+						<div class="row">
+							<div class="col-md-4">
+								<img th:src="@{${book.imageURL}}" alt="Book Image" class="img-thumbnail">
+							</div>
+							<div class="col-md-8">
+								<h3 th:text="${book.bookName}">Tựa sách</h3>
+								By <p th:text="${book.author}">Tác giả</p>
+								<p th:text="${book.publishYear}">By Tác giả</p>
+								<p th:text="${book.rating}">9.78/10</p>
+							</div>
+						</div>
+					</div>
+					</div>
+		</div>
+
+			<div class="col-4 col-md-4 flex-column">
+				<h1>Links</h1>
+				<ul class="nav flex-column nav-pills">
+					<li class="nav-item">
+					  <a class="nav-link" aria-current="page" th:href="@{/book/manageBooks}">Manage Books</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link"  th:href="@{/book/showAddForm}">Add New Book</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link" href="#">@Copyright - 3211321265456 - SinhVien</a>
+					</li>
+				  </ul>
+			</div>
+
+
+
+		</div>
+
+	</div>
+</body>
+</html>

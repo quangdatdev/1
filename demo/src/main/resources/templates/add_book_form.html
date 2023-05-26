@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Thêm sách mới</title>
+</head>
+<body>
+	<div class="container">
+		<h3>Add New Book</h3>
+		<form method="post" role="form" th:action="@{/book/saveBook}"
+			th:object="${book}">
+			<div>
+				<div>
+					<label>Tựa sách:</label> <input class="form-control col-4 mb-4"
+						placeholder="Title" th:field="${book.title}" />
+				</div>
+				<div>
+					<label>Tác giả:</label> 
+					<select multiple="multiple" class="form-control" th:field="*{authorIds}">
+						<option th:each="author : ${allAuthors}" th:value="${author.id}"
+							th:text="${author.name}"></option>
+					</select>
+
+
+				</div>
+				<div>
+					<label>Năm xuất bản:</label> <input
+						class="form-control col-4 mb-4" placeholder="Năm xuất bản"
+						th:field="${book.publicationYear}" />
+				</div>
+				<div>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Clear" />
+				</div>
+				<input th:field="${book.id}" type="hidden" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>
